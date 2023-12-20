@@ -1,0 +1,1055 @@
+NỘI DUNG CHUYÊN MÔN - SOFTWARE REQUIREMENTS/REQUIREMENTS ENGINEERING
+							
+							ENGINE/ENGINEER
+
+			HỌC CÁC KĨ THUẬT ĐỂ TÌM RA CÁC YÊU CẦU PHẦN MỀM
+			HỌC CÁC KĨ THUẬT/CÁCH THỨC ĐỂ LÀM VIỆC VỚI KHÁCH HÀNG 
+				NHẰM MỤC ĐÍCH TÌM RA CÁC YÊU CẦU PHẦN MỀM
+
+GIAO TIẾP VỚI GÃ BÊN NGOÀI DEVELOPMENT TEAM (SOFTSKILLS, BUSINESS)
+NÔM NA "TÌM XEM AI ĐÓ MUỐN GÌ, VÀ CÁI GÌ NÀY SẼ ĐƯỢC HIỆN THỰC QUA TÍNH NĂNG/MÀN HÌNH
+CỦA PHẦN MỀM, trước đó có thể làm = tay, hoặc = phần mềm cũ kĩ"
+
+* Ví dụ về Requirements:
+- Tôi muốn app có tính năng thêm mới khách hàng thân thiết
+- Thêm mới hồ sơ sinh viên
+- Tôi muốn app có màn hình tạo mới đơn hàng
+- App cho phép tôi sửa giá/cập nhật giá của dịch vụ chăm sóc thú cưng
+
+I. WHY REQUIREMENTS ENGINEERING ?
+   (Tại sao cần phải học các kỹ thuật lấy yêu cầu phần mềm ?)
+
+ 1. Development Team
+  - Tam sao thất bổn -> sai lệch truyền info khi giao tiếp
+
+ 2. Customer
+  - Khó diễn đạt được Requirements
+  - Diễn đạt sai giữa điều ta muốn và điều ta nói
+  - Emerging: mới thêm Requirements
+  - Changing: Requirements thay đổi 
+  - Conflict: reqs mâu thuẫn với nhau như dễ dùng >< bảo mật
+
+  * Customer là ai?
+  - Người đặt hàng dev team làm app -> người đưa ra reqs cho dev team
+
+  - Product-based: 
+	dev <-----> Khách hàng: sếp, founder, trưởng phòng kinh doanh trong cùng cty
+
+  - Service-based:
+	dev <-----> Khách hàng: cty, doanh nghiệp bên ngoài cần app, 
+	      app		đặt hàng app xài luôn
+
+  - Outsourcing:
+	dev <--> cty phần mềm khác <---> khách hàng cty, doanh nghiệp
+		  "khách hàng"	          "khách hàng OF khách hàng"
+
+  - Cty lớn:
+	     reqs
+	dev <----> Khách hàng: trưởng phòng phòng ban khác trong cùng cty 
+
+  
+
+ 3. Cost - Chi phí, phí tổn khi reqs bị sai, thừa, thiếu
+  -> User quay lưng với app
+
+II. Ý tưởng app đến từ đâu?/App xuất hiện như thế nào?/Các loại công ty mà app xuất hiện:
+ 
+
+	1. SERVICE-BASED				     2. PRODUCT-BASED
+- Công ty chờ ai đó đưa tiền, đặt hàng		- Công ty tự bỏ tiền túi, tự đưa ra ý tưởng
+  công ty làm app cho họ			  làm app, bán ra thị trường, mong nhiều
+						  người mua, xài
+	    tiền					     app
+  Cty p/mềm -----> ai đó, khách hàng		  Cty p/mềm ----> - ai mua    k/hàng	
+	    <----					    <---- - ai xài
+	      app
+
+- Đặt hàng làm riêng				- Bán rộng rãi
+- Gọi là: CUSTOMIZED/BESPOKE APP		- Gọi là: GENERIC APP
+- Vd:						- Vd:
+ + Fsoft: bệnh viện gọi đặt làm app QLBV	 + Fsoft: AKA BOT nhúng vào các website =/=
+  	  TPBank gọi làm Live 24/7		 + Microsoft: Windows, Office
+ + ELCA: khách sạn châu Âu muốn có app QLKS	 + Riot: LMHT
+						 + EA Sport: FIFA		 
+						 + Adobe: Photoshop
+
+- Ko ế, ko cần bán app, có luôn CUSTOMER 	- Chủ động đưa ra reqs 
+  để hỏi REQS, có $				  Tìm reqs: nghiên cứu thị trường, SURVEY
+						 	    -> tìm TREND		
+- Theo REQS của người ta, RANK của cty PM,	- Tự bỏ tiền -> ế, lỗ (user ko thích)
+  có số má thì người ta mới nhờ làm		  Ổn -> trở thành 1 đế chế	    
+						
+			
+* Outsourcing/outsource				* START-UP/KHỞI NGHIỆP:
+  FSoft -----> Cty p/mềm ở Nhật ----> Bệnh viện - Cty non trẻ có ý tưởng về 1 app/sản phẩm 
+	làm app QLBV  		      ở Nhật	  ĐỘC, LẠ và hi vọng chiếm đc bá tánh
+	<-------				- Tự bỏ tiền túi hoặc SHARK  
+	outsourcing/outsource			- Vd: Uber: app gọi xe, 
+	gia công phần mềm			      Sky Mavis: Axie Infinity
+
+ 3. Các cty lớn/cty công nghệ xài app hàng ngày để vận hành   
+  - Vd: TGDD, LAZADA, BHNT, Ngân hàng, MOMO
+  - Nuôi sẵn 1 nhóm dev để nâng cấp, bảo trì, viết mới app xài cho doanh nghiệp
+
+III. AS IS SYSTEM/LEGACY SYSTEM
+     TO BE SYSTEM
+
+ 1. AS IS SYSTEM/LEGACY SYSTEM
+  - Hiện trạng, cách khách hàng đang làm việc trước khi có app của chúng ta
+  - Hệ thống cũ, hệ thống hiện có: đang xài = tay, giấy, Excel, app version cũ của cty khác
+    họ ko làm tiếp nữa
+  - Vd: ATM truyền thống
+
+ 2. TO BE SYSTEM
+  - app mới ta sẽ viết cho khách hàng -> liên quan đến Legacy System/As is system
+  - Vd: ATM Live Bank 24/7
+
+IV. Phân biệt giữa Project và Product
+
+ 		Project					Product
+  - Quá trình, các công việc làm ra cái app  ---------> phần mềm
+				  	     xong, done
+	đang làm				vs 	đã xong, ra lò, xuất xưởng	
+	-> dev team					-> bug và sử dụng 
+
+V. Scope of RE
+   Quá trình làm về/học về Requirements, ta tập trung vào những thứ gì?
+
+ * 3 góc nhìn, 3 câu hỏi cần quan tâm khi làm app, khi làm việc với khách hàng, 
+   khi làm về REQS
+
+ 1. WHY? 
+  * Tại sao lại làm app này? 
+   - kiếm tiền $$$
+   - Benefits: lợi ích khi xài app
+
+  * App Generic:
+   - User/khách hàng sử dụng là bất kỳ ai ngoài kia, tiếp cận họ = cách nào?
+    -> Nghiên cứu thị trường, user = cách QUESTIONNAIRE/SURVEY, 
+       lấy số liệu từ xung quanh => Tìm được TREND, NEED => app mới xuất hiện, hợp lý
+   
+  * Bài toán: Kiếm tiền từ xe máy!!! - Xe ôm truyền thống
+    
+    1. Kể câu chuyện thị trường - CONTEXT/BACKGROUND/CURRENT SITUATION
+       Hiện trạng, legacy system/as is system: xã hội đang xe ôm ra sao
+ 
+     - Người đi xe ôm: phải tự tìm tài xế, trả giá, chiều về bị i chang
+     - Bác tài: chờ khách, trả giá, chạy xe ko chiều về
+     -> Phần mềm fix được problem này ko?
+     - NEED: nhu cầu chủ động kết nối 2 bên để có chuyến xe ôm thành công
+
+    2. Business Opportunity: cơ hội làm ăn, cơ hội làm app kiếm $
+     - Một app gọi xe giúp điều phối nhu cầu 2 bên
+     - Ko trả giá, rước tận nơi, feedback, nối chuyến
+     - Đề xuất 1 app để fix các problem
+     -> Nhìn xung quanh, tìm ra chỗ kiếm tiền, tìm 1 ngách thị trường - NICHE MARKET
+	
+
+  * Ai hỏi câu hỏi này, ai trả lời?
+   - GENERIC APP: chủ công ty, founder, trưởng phòng kinh doanh, phát triển sản phẩm
+		   -> trách nhiệm với tiền túi của mình
+   - CUSTOMIZED/BESPOKE APP: chủ doanh nghiệp sẽ phải trả lời tính cần thiết của
+			      việc làm app để giúp công việc kinh doanh, vận hành
+   - App của công ty bự, công nghệ (Ngân hàng, siêu thị, MOMO, ...): chủ doanh nghiệp,
+      sếp, phòng ban đặt ra câu hỏi
+ 
+   
+ 2. WHAT? 
+  * App có tính năng gì, App có màn hình gì để hỗ trợ công việc của customer/user?
+  * Ví dụ: - app cần có màn hình cho cập nhật giá dịch vụ chăm sóc pet
+	   - app send notification về đồ chơi mới tới chủ xe
+   	   - app hỗ trợ tính năng tạo mới hồ sơ khách hàng thân thiết	
+   
+ 
+ 3. WHO?
+  * Ai sẽ xài app, WHAT, xài màn hình của app?
+    (user role) actor trong sơ đồ Use Case Diagram
+    As a ROLE I want to ...
+  * Device/thiết bị gì sẽ cần để trợ giúp cho quá trình xài các tính năng
+  * Ví dụ: - Cashier/counter xài WHAT: tạo mới đơn hàng, in bill
+	     Máy đọc mã vạch(cố định, cầm tay)
+	     Touch screen, printer, payment gateway0
+
+VI. Định nghĩa và phân loại về REQUIREMENTS
+
+ 0. Định nghĩa chung: 1 câu phát biểu của ai đó và ai đó khác sẽ thực thi
+
+ 1. Project Requirements
+  * Dành cho ai? Gã PM (Project Manager)
+		 SCRUM Master
+  * Ví dụ: - anh em tăng ca 3 tuần heng
+	   - cần thêm 3 dev xịn để tăng tốc dự án
+	   - cần mua ngay/sớm máy bar-code reader để thử nghiệm tính năng create an order
+  * Định nghĩa: - những câu phát biểu bàn về sự chuẩn bị nhân lực, nguồn lực để sẵn sàng 
+		  cho việc triển khai dự án, ngay cả trong quá trình làm dự án
+		- tạo môi trường để dân dev làm code đúng thời gian, đúng chất lượng
+		- điều phối các nguồn lực để ra được cái app
+		- dính đến góc nhìn quản lý dự án "Project management triangle"
+				
+			       Time
+				/\
+			       /  \
+			      /	   \	 
+			     /	    \
+			    /Quality \
+                      Cost /__________\ Scope
+
+  * Làm sao để trở thành PM: 
+   - Kỹ năng quản lý
+   - Học chứng chỉ PMP/PMI, SCRUM Master Certification 
+
+ 2. Product Requirements
+  * Dành cho ai? IT BA (IT Business Analyst) - chuyên viên phân tích nghiệp vụ khách hàng
+		 BrSE (Bridge Software Engineer) - kĩ sư cầu nối 
+  * Ví dụ: - app cần có màn hình cho phép chủ tiệm PetCare cập nhật giá dịch vụ 
+	     chăm sóc thú cưng	
+	   - tạo mới đơn hàng/nhập info mua hàng theo 2 cách: scan bar-code hoặc 
+	     gõ mã vạch từ bàn phím
+  * Định nghĩa: - những câu phát biểu mô tả về các tính năng, màn hình của phần mềm sẽ làm
+		  (góc nhìn WHAT)
+		- những câu phát biểu nói về benefits khi làm app này (góc nhìn WHY)
+  
+  * Phân loại Product Requirements:
+   1. Business Requirements: Góc nhìn WHY
+    - Ví dụ: + app sẽ giúp giảm thiểu đồ ăn dư thừa, đổ bỏ
+	     + app sẽ giúp thực khách tiện lợi trong việc chọn món và đi ăn
+	     + app tạo kết nối tiện lợi, thuận tiện giữa bác tài và người cần đi xe
+	     + app sẽ tạo ra 1 trải nghiệm chơi game hoàn toàn khác biệt
+
+    - Định nghĩa: + những câu phát biểu nói về mục tiêu kinh doanh
+ 		  + nói về benefit ai đó sẽ đạt được khi có app
+		  + goal, target, KPI mà app sẽ cần đạt
+		  + góc nhìn kinh doanh, góc nhìn lợi ích, góc nhìn lý do tồn tại app - WHY
+
+    - Ai đặt câu hỏi: sếp, founder, giám đốc, trưởng phòng bật đèn việc làm app
+		      -> bật đèn phải có lý do -> tiền, benefit 
+
+   2. User Requirements: Góc nhìn WHAT, detail
+    - Định nghĩa: + là câu phát biểu đơn giản, dễ hiểu về tính năng của app 
+		    dưới góc nhìn của user
+
+    - Công thức: Verb + object/adj/adverb
+		 WHAT + Quality/Attribute
+
+    - Ví dụ: + App hỗ trợ tính năng phân quyền - CRUD tùy loại user
+	     + App có tính năng tạo mới đơn hàng tại quầy thu ngân
+   3. System Requirements: Góc nhìn WHAT, more detail
+    - Định nghĩa: + những câu phát biểu nói về tính năng, màn hình của app làm gì 
+ 		  cho công việc hàng ngày của user với chất lượng ntn,
+		  + những câu phát biểu dành cho dân dev, chi tiết hơn, kèm thuật ngữ
+		  kỹ thuật
+		  
+    - Ví dụ: + App hỗ trợ tính năng phân quyền/login 1 cách tiện dụng và an toàn với user
+					WHAT/verb		quality
+	     + App hỗ trợ login = các hình thức sau: Facebook, gmail, số di động OTP 
+	       và 2-level authentication
+	     + App có tính năng tạo mới đơn hàng với phương thức tạo đơn hàng đa dạng
+               với bar-code reader (cố định, cầm tay) hoặc gõ = bàn phím, touch, mã bill 
+	       generate lại theo từng ngày với định dạng nào đó 
+	
+    a. Functional Requirements: 
+     - Yêu cầu chức năng: WHAT/VERB
+     - Động tử xử lí 1 cái gì đó cho customer/user
+     
+    b. Non-functional Requirements
+     - Yêu cầu phi chức năng: QUALITY/ATTRIBUTE
+     - Keyword: nhanh, chậm, to, nhỏ, xấu, đẹp
+       -> Liên quan tới cảm xúc, cảm giác khi xài app
+     - Ko đề cập 1 cái chức năng cụ thể mà áp dụng cho toàn bộ cái app
+     - Metrics: độ đo
+
+ * CHỐT DEAL: cho dù là USER REQUIREMENTS, SYSTEM REQUIREMENTS, functional,
+	      non-functional requirements thì developer đều phải implement,
+	      tìm WHAT - màn hình + QUALITY - trải nghiệm màn hình
+
+VII. STAKEHOLDERS
+ 1. Định nghĩa: những bên liên quan, những người liên quan đến quá trình làm app, 
+                làm dự án, liên quan bao gồm quyền lợi - hưởng gì từ dự án, app
+				             trách nhiệm - làm gì cho dự án, app
+
+ 2. Phân loại: 
+  a. Developer/Programmer/Coder
+     Software Engineer
+     QC/Tester,... Designer
+     PM...
+
+  b. ITBA - IT Business Analyst
+     BrSE - Bridge Software Engineer
+  
+   * Định nghĩa:
+    - Gã đứng giữa các bên		dev team
+    - Cầu nối giao tiếp giữa các bên {	customer/user
+    - Giao tiếp về tính năng phần mềm, tên các màn hình/chức năng
+   
+   * Phân biệt khái niệm:
+    - BA (kinh tế): + Business Administration: quản trị kinh doanh
+	  	    + Business Analytics: phân tích kinh doanh
+    - MBA: Master of Business Administration: thạc sĩ quản trị kinh doanh
+
+    - BA (IT): Business Analyst: chuyên viên phân tích nghiệp vụ khách hàng
+
+   * Nhiệm vụ của BA - Main tasks:
+    - Hỗ trợ các sếp để tìm ra Business Requirements - góc nhìn WHY
+	
+    - Tìm ra, nhận diện ra các nhóm user, nhóm người dùng sẽ xài app mà ta viết - góc nhìn
+										  WHO
+      Ví dụ: FAP: Student, Lecturer, Parents, Academic Staff
+	     Quản lí bệnh viện: Bác sĩ, y tá, điều dưỡng, kế toán
+
+    - Tìm ra các REQS/ELICIT các user requirements, functional REQS, non-functional REQS
+      Tìm ra các chức năng, tên của các màn hình mà phục vụ cho user - góc nhìn WHAT
+      Ví dụ: App Lost & Found 	
+       	     -> Login = @fpt.edu.vn
+	     -> Chat
+	     -> View Post
+
+    - Hệ thống hóa toàn bộ các REQS tìm được thành 1 DOCUMENT đẹp xịn xò dùng để 
+      trao đổi với các bên: REQUIREMENTS DOCUMENT/BRD/SRS/FRS/FRD
+
+    - Quản lí sự thay đổi của các REQS - "change log" 	
+
+   * Skills - kỹ năng cần có để làm BA:
+    - Hard-skills:
+     + Kỹ năng viết code/kỹ năng dev
+
+    - Soft-skills:
+     + Kỹ năng giao tiếp
+     + Kỹ năng phỏng vấn: đặt câu hỏi, lắng nghe, và giao tiếp
+     + Mô hình hóa các quy trình: nghe customer nói về các bước xử lí công việc của họ và
+				  ta vẽ thành quy trình -> luồng màn hình của app
+     + Tư duy hệ thống(system thinking): khi thiết kế app phải "tính" việc app có tích hợp
+					 giao tiếp với app khác hay ko
+       Vd: - ATM: rút tiền liên ngân hàng
+	   - App bán hàng, Lazada: COD, MoMo, GHN, GHTK
+	   - Tư duy API 
+     + Tổ chức, điều phối: đôi khi ta làm việc cùng lúc nhiều khách hàng
+                           -> vấn đề tổ chức 1 phiên/buổi làm việc cần được đặt ra
+     + Quan sát/Observation: quan sát xã hội, quan sát doanh nghiệp hoạt động,
+			     vận hành như thế nào 
+			     => tìm ra cơ hội làm app (product, khởi nghiệp)
+			     => mình nhận làm app quản lý bán hàng -> quan sát app có trước
+								      học kinh nghiệm	     
+       -> Digital transformation - chuyển đổi số: tin học hóa 1 vấn đề nào đó 
+
+     + ...  
+    
+    * How to become BA?
+      Làm sao để trở thành BA?
+     - User xịn sò nhiều kinh nghiệm 
+       Vd: gamer chuyên nghiệp -> BA Game
+     	   kế toán viên giỏi -> BA app kế toán
+       -> BA hẹp - đúng cái anh giỏi
+       -> Trang bị thêm kĩ năng dev
+
+     - Devteam: + Developer 
+		+ QC/Tester: hiểu app nhất về mặt vận hành -> ứng viên tốt cho BA
+     
+     - Rookie: gã này là dân IT nhưng muốn đi khách ngay từ đầu
+
+     -> Devteam & Rookie có sẵn kỹ năng dev rồi, cần học thêm về quan sát xã hội,
+        kế toán đại cương và dòng tiền trong doanh nghiệp - 1 chút kinh doanh
+
+    * Chứng chỉ - Certification:
+     - Các trung tâm đào tạo kỹ năng BA: có 2 công ty/tổ chức đào tạo BA:
+      + IIBA: ECBA, CCBA, ...
+      + PMI: ..., có thêm chứng chỉ PMP - quản lý dự án 
+      -> Bộ giáo trình luyện thi BABOK (Body of Knowledge) - dàn khung kiến thức BA
+
+      + SCRUM.ORG: các chứng chỉ liên quan đến Agile, SCRUM: SCRUM MASTER, PRODUCT OWNER
+
+    * Mô hình giao tiếp giữa BA và Customer - Cam kết, nội quy, quy tắc làm việc, 
+      					      phối hợp giữa 2 bên
+
+		      tui muốn lưu trữ hồ sơ khách hàng
+		      --------------------------------->  
+				REQS
+      Customer/User						BA   <---> Dev team
+              	       app với các chức năng, màn hình gì
+                      <--------------------------------
+		       tạo mới hồ sơ khách hàng, CRUD
+
+      -> Quy tắc phối hợp giữa BA và Customer:
+       * Bill of Rights:
+	- Khách hàng có quyền đòi hỏi gì ở BA, BA phải làm gì, như thế nào cho customer	
+	 + Khách hàng mong BA hiểu được thuật ngữ, từ vựng mà họ sử dụng 
+					(domain knowledge) - lĩnh vực của k/hàng
+	   Vd: Giám đốc bệnh viện muốn làm app QLBV:
+	       - Chỉ số sinh hiệu - vital signs	
+	       - Xét nghiệm cận lâm sàng(siêu âm, điện tâm đồ, chỉ định, chống chỉ định)
+	       App kế toán, bán hàng:
+	       - Phiếu xuất kho, hóa đơn VAT
+	       - Chuyển kho, phiếu chi, ...
+	 + BA phải học, hiểu cách mà customer đang làm việc/LEGACY SYSTEM/AS IS SYSTEM	
+         + BA phải ghi ghép các REQs, hệ thống hóa được các yêu cầu, các cách customer
+	   đang làm việc -> ra được SRS
+	 + BA phải biết được rằng REQs có thể được thay đổi vì:	
+	   -> Môi trường kinh doanh(nhu cầu kinh doanh, nghiệp vụ kinh doanh) thay đổi
+	   -> Luật pháp thay đổi  
+	 + Khách hàng kì vọng app viết ra phải xài được cho công việc của họ		
+
+       * Bill of Responsibilities:
+	- Trách nhiệm của Customer, Customer phải làm gì cho BA
+	 + Customer phải giảng giải cho BA nghe về cách customer đang làm việc/
+	   Legacy System/As is System.	
+	 + Customer phải dành thời gian cho BA để BA học và hiểu công việc của customer
+	   Q&A với customer khi BA đang tìm hiểu công việc của customer
+	 + Customer phải cung cấp REQs cho BA chính xác, đầy đủ - công thức, dẫn chứng 
+	   đầy đủ, sau đó customer phải review lại DOC mà BA viết ra để đảm bảo tính 	 
+	   chính xác về ý hiểu của BA là ý customer nói
+    	 + Customer nếu thay đổi REQs thì phải báo sớm cho BA, để BA cập nhật vào trong DOC 
+	   để dev đọc được điều này, chỉnh sửa code cho phù hợp
+	 + Customer phải định nghĩa tiêu chuẩn nghiệm thu sản phẩm
+	   tức là 1 sản phẩm/1 tính năng/1 màn hình dev team phải làm thế nào để customer
+	   chịu rằng, xác nhận rằng nó ổn khi sử dụng, xài được trong công việc
+	   Tiêu chuẩn nghiệm thu: những câu phát biểu rằng tôi chấp nhận anh
+				  liệt kê ra những tiêu chuẩn chấp nhận
+	   ACCEPTANCE CRITERIA (AC): CÓ NHIỀU CÁCH VIẾT, CÁCH NỔI TIẾNG NHẤT LÀ
+	   dùng phương pháp BDD - GIVEN - WHEN - THEN!!!
+
+ -> Development Team
+
+  c. Customer:
+   * Định nghĩa: + là người đưa ra ý tưởng về phần mềm, đưa ra yêu cầu phần mềm (REQS) cho
+		   dev team hay nói về mong ước của mình về phần mềm
+		 + một gã muốn có cái phần mềm để xài hoặc cho ai khác xài
+		 + gã này có thể trả tiền hoặc ko
+  
+   * Ví dụ: 
+    - App thuộc loại Product-based (tự nghĩ app và làm), dạng start-up: 
+     + sếp, founder, phòng marketing, phòng phát triển sản phẩm đưa ra ý tưởng làm app
+       cho dev team
+     + Bá tánh đưa ra REQS cho dev team và bỏ tiền mua game
+     + Photoshop, OBS,...
+     -> Bá tánh bỏ tiền ra mua app thì là customer
+
+    - App thuộc loại Service-based (làm theo đặt hàng của ai đó - doanh nghiệp, công ty):
+     + Giám đốc Bệnh viện Chợ Rẫy	        REQS
+     + Giám đốc Ngân hàng TP Bank	        -----> FSoft
+     + Petrolimex		                 $  
+     ->	Chủ doanh nghiệp là Customer	              (dev team)
+
+    - Outsourcing/Outsource:
+     + Cty phần mềm X <------ Cty phần mềm Y <------> Doanh nghiệp Z (bệnh viện, ngân hàng)
+	Fsoft	      <------ Mỹ, châu Âu, Japan
+		Customer là công ty IT khác, cò IT
+
+     -> Dễ dàng giao tiếp vì cùng hệ IT 
+
+    - App dùng cho nội bộ doanh nghiệp:					   REQS
+     + TGDĐ: app quản lý đơn hàng, kho hàng, tiếp tân - các nhân viên ở    ----> Dev team
+							phòng ban cty cần
+							cái app để vận hành
+						     REQS				        
+     + FU: EOS, FAP - thầy cô, sinh viên có feedback ----> Dev team 
+     -> Customer là nhân viên, thầy cô, sinh viên cần app cho công việc của họ
+ 
+  d. User:
+   * Định nghĩa: GÃ HIỂU TÍNH NĂNG CỦA APP NHẤT
+    - Người trực tiếp xài app, thực hiện các thao tác trên app (click, input,...)
+
+   * Ví dụ:
+    - FAP: Student, lecturer, academic staff
+    - TGDĐ.com: + tui, bạn - khách hàng của TGDĐ
+		+ những người quản trị phía sau, admin của TGDĐ
+    -> CRUD các màn hình là user
+
+  * Ví dụ phân biệt giữa customer và user: 
+    - Ba má dẫn mình đến tiệm Honda mua con Dream cho ba má xài
+    -> Ba má là khách hàng của Honda và cũng là user
+    - Ba má dẫn mình đến tiệm Honda mua con Cub cho mình xài
+    -> Ba má là khách hàng của Honda còn mình là user
+  -> Customer và user tuy 2 là 1 và 1 là 2 tùy ngữ nghĩa nhưng đều đưa ra REQS cho dev làm!
+   
+   * Phân loại:
+    1. DIRECT USER
+     - Người trực tiếp xài app, trực tiếp mở màn hình của app, nhập info, nhấn nút, nhận
+       về kết quả để dùng trong công việc của họ
+     - Ví dụ: + Phần mềm bán hàng: cô gái/chàng trai thu ngân là direct user
+	      + Game tụi bay chơi mỗi ngày, tụi bay là direct user
+  	      + Phần mêm quản lí bệnh viện: bác sĩ, y tá là direct user
+
+    2. INDIRECT USER
+     - Là người mà cần data từ app, cần dữ liệu từ app để dành cho việc ra quyết định
+       nào đó trong vấn đề quản lí
+     - Họ ko chạm trực tiếp vào app, nhưng nhờ ai đó đưa data từ app cho họ
+     - Ví dụ: thầy hiệu trưởng là indirect user, ko cần account trong FAP, EOS, nhưng 
+	      cần data từ FAP để ra quyết định như tỉ lệ sinh viên đổi ngành, bỏ trường!!!
+						   tỉ lệ/số lượt nợ môn của sinh viên
+              -> Nhân viên dưới quyền, admin của FAP/EOS cung cấp data cho thầy,
+		 vẫn cần data mà ko sờ trực tiếp -> indirect
+
+     CHỐT DEAL: MÀN HÌNH ADMIN NGOÀI TABLE CÓ PHÂN TRANG VÀ CRUD, THÌ CÒN CẦN SHOW RA
+		1 ĐỐNG CÁC CHART/BIỂU ĐỒ THỂ HIỆN TREND CỦA DATA
+		SỐ LIỆU THỐNG KÊ THEO GÓC NHÌN NÀO ĐÓ
+		SELECT COUNT, AVG, SUM -> AGGREGATION FUNCTION
+
+		TRONG NGHỀ GỌI LÀ MÀN HÌNH DASHBOARD - FILTER THEO TỪNG TIÊU CHÍ VỚI 
+						       ĐỒ THỊ ĐI KÈM
+
+    3. USER PERSONAS
+     - Chân dung người dùng - dùng trong khối ngành kinh tế rất nhiều khi 
+       bạn có ý tưởng về làm 1 dịch vụ, 1 sản phẩm nào đó để tung ra thị trường
+     - Là 1 bước thăm dò thị trường, tìm phân khúc khách hàng mà sẽ mua sản phẩm
+       của ta đang dự định làm		     
+     - Ví dụ: + tui muốn làm app X, app X này sẽ có ai sẵn sàng trả tiền - bá tánh 
+	        ngoài kia ai sẵn sàng?
+       	      + game Y: ai xài, người lớn, con nít, hay cả 2. Trai hay gái nhiều hơn?
+			giả sử ta nói rằng game sẽ nhắm đến user từ 12 - 30 (người trẻ)
+			trai, gái, lứa tuổi 12 - 20 khác 1 chút so với 20 -30
+			2 phân khúc này mà chỉ nói nhiêu đây, chung chung quá, chưa 
+			hình dung rõ được thói quen, tính cách, sở thích,...
+		để dễ dàng trao đổi với stakeholders khác, nhóm làm dự án, nhóm làm 
+		sản phẩm quyết định fake 2 user nào đó, dựng nên 2 hồ sơ người dùng - 
+		giả mà như thật: bạn Nguyễn Văn An, male, ngày sinh, học trường, thói quen?
+		hồ sơ này đại diện cho 1 nhóm các user ngoài đời thật, đã lấy mẫu số chung,
+		hình thành nên An
+					
+	     
+		
+  e. Product Owner
+  f. ...
+
+VIII. CÁC BƯỚC/QUY TRÌNH/KĨ THUẬT ĐỂ TÌM RA VÀ QUẢN LÍ REQS 
+      (REQUIREMENTS ENGINEERING ACTIVITIES)
+
+ 1. REQUIREMENTS DEVELOPMENT: là nói về các kĩ thuật để có được REQs, có được REQs DOC
+
+  1.1 ELICITATION
+      khai phá, tìm ra, khai mở các REQs từ phía khách hàng/user/bá tánh/các sếp
+      dùng các kĩ thuật (technics) để lấy ra/tìm ra yêu cầu phần mềm
+
+   1.1.1 INTERVIEWING: làm việc 1 BA - 1 CUSTOMER/USER
+    - Kĩ thuật dùng phổ biến nhất để tìm ra REQs từ khách hàng, từ user. Là phương pháp
+      tìm REQs hiệu quả nhất do tính tương tác CAO và TRỰC TIẾP với user/customer
+    - THƯỜNG LÀ 1 - 1, 1 BA vs. 1 CUSTOMER/USER tại 1 thời điểm
+    - Hình thức Face to Face, mặt đối mặt, trò chuyện trực tiếp
+    - Có 3 bước, 3 công đoạn cần có của việc phỏng vấn khách hàng:
+    
+     * CHUẨN BỊ (PREPARATION):
+      - Kiến thức nền (domain knowledge) về lĩnh vực mà app sẽ được viết và chạy
+        App quản lí bệnh viện - kiến thức về bệnh viện BA cần biết cơ bản:
+	 + Quy trình khám bệnh bắt đầu như thế nào?
+	 + Sổ khám bệnh ra sao?
+	 + Có bảo hiểm y tế hay ko?
+
+      - Chuẩn bị trước câu hỏi, chủ đề hỏi để hỏi customer/user 
+        có 2 loại câu hỏi để đặt ra cho customer/user:
+     	 + Câu hỏi đóng - closed-end question: giống câu hỏi Multiple Choice
+			  1 hữu hạn câu trả lời, đáp án
+			  câu hỏi mang tính chất xác nhận, muốn biết chính xác/
+			  khẳng định 1 điều gì
+	   Vd: mày có bạn gái chưa? có/chưa/đang tương tư
+
+  	 + Câu hỏi mở - câu hỏi dò - opened-end question - câu hỏi viết luận - essay
+	   Vd: mày hãy kể tao nghe về cô ấy?
+	   câu hỏi đưa đẩy, dò, tìm kiếm thông tin, vì vô tận trong đáp án trả lời và 
+	   cách trả lời, tự do trong việc trả lời
+
+	-> ƯU TIÊN XÀI CÂU HỎI MỞ, ĐỂ TÌM HIỂU QUY TRÌNH, NGHIỆP VỤ, CÁCH THỨC MÀ 
+	   KHÁCH HÀNG ĐANG LÀM. Trong quá trình tìm hiểu, có thể xài thêm câu hỏi đóng 
+	   để xác nhận info
+	   Câu hỏi đóng thường dựa trên kinh nghiệm sẵn có của BA - BA có bản lĩnh,
+	   nghệ thuật để kiểm soát câu chuyện, ko đi xa mục đích muốn gặp phỏng vấn
+	   DO XÀI CÂU HỎI MỞ, ĐÁP ÁN NÓ SẼ RỘNG, ĐI XA CÂU CHUYỆN, LAN MAN QUA CHUYỆN KHÁC
+
+      - BA thông báo với sếp của bên customer để được gặp các "lính" dưới để phỏng vấn!!!
+       + Ví dụ: Ba má bạn đặt hàng FSoft làm app Quản lí kho, Quản lí nhân sự
+	       Tui - BA sẽ phỏng vấn Ba má bạn
+	       Ba má bạn lại nói thêm: gặp lính là cô kế toán, anh quản lí nhân sự (HR)
+				       gặp thủ kho để trò chuyện chi tiết hơn!!!
+
+      - Chuẩn bị lịch trình/thời khóa biểu/lịch hẹn làm việc với customer/user
+	Ba má đặt làm app cho lính ba má xài!!!
+	+ Lính ba má được mướn được trả lương vì làm việc cho ba má, hàng ngày 
+	  lính ba má sẽ quản lí kho, thu tiền khách hàng, tư vấn bán hàng, chat trả lời 
+	  hỏi mua, khiếu nại đổi trả
+	+ Lính ba má sẽ bận rộn việc được mướn được trả lương
+	Thêm việc gặp mình/BA để lấy yêu cầu làm phần mềm, user cần dành thời gian 
+	cho mình, bị ảnh hưởng đến công việc được trả lương!!!
+
+        -> CHỐT HẠ: BA phải thống nhất lịch làm việc với Customer/sếp/ba má/lính ba má
+		    vì customer/user luôn có việc riêng của họ ở công ty họ;
+		    HỌ ĐƯỢC TRẢ LƯƠNG CHO LỊCH LÀM VIỆC ĐÓ
+
+      - Quần áo/trang phục: nghiêm túc, chỉnh tề, (đồng phục cty nếu có)
+	+ Lần đầu xuất hiện: chỉn chu, quần: kaki, tây!!!
+				       áo: sơ mi (thun có cổ)
+				       giày
+				       nữ BA: đầm công sở okie
+
+	+ Lần sau thả lỏng 1 chút
+
+      - Máy ghi âm: công khai việc ghi âm hay ko công khai!!!
+	tùy ngữ cảnh, nhưng nếu cần thì ghi âm lén, nhưng ko dùng để đe dọa Customer
+	dùng nó cho việc nghe lại câu chuyện/nghiệp vụ làm việc của Customer
+	ko dùng ghi âm chống Customer
+		tránh rắc rối cãi nhau về những gì đã nói -> dùng 2 tuyệt chiêu bắt buộc
+		phải biết, phải có khi đi làm:
+			GHI BIÊN BẢN CUỘC HỌP, VÀ GỬI MAIL
+
+      - Giấy A4 trắng + folder nhựa, 2 cây bút: ghi chép trong quá trình thảo luận
+      - USB + laptop: show demo, show sản phẩm tương đương khi thảo luận, USB copy tài liệu
+		      của Customer
+      - Card visit (hộp đựng)
+      - Có lính đi kèm để làm thư kí ghi chép - chính là anh chàng rookie, lính BA mới đi
+	theo học nghề
+      - ...
+
+     * TIẾN HÀNH PHỎNG VẤN (CONDUCTING, WHILE)
+      - Xuất hiện đúng giờ, chuyên nghiệp
+      - Xuất hiện ở phòng họp của cty mỗi bên; tách biệt được phòng làm việc của Customer
+        là tốt nhất 
+      - Đi cùng thư kí (BA lính mới)
+      - Face to Face, eye to eye: tạo thiện cảm trong trò chuyện cực kì quan trọng
+				  vì còn nhiều lần gặp sau!!!
+      - Mình Q&A với Customer/user: sử dụng nhuần nhuyễn 2 loại câu hỏi, cả chuyện ngoài lề
+				    phá băng thái độ
+			thư kí: ghi chép/gõ cực nhanh ý trao đổi...
+      - Ghi âm!!! ghi âm công khai/ngầm: tùy ngữ cảnh. Ko dùng ghi âm chống lại/cãi nhau
+					 với khách hàng về nghe lại
+      - Dùng giấy bút ghi chép lại luồng xử lí, ghi chú
+		(1) ----- (2) ----- (3) luồng xử lí của đơn hàng
+
+      - Xin các tài liệu/văn bản/quy định/quy trình sẵn có của cty khách hàng
+	xin template/dàn khung/tên cột/công thức
+	[xin data giả vì dữ liệu làm ăn là nhạy cảm với người ngoài]
+	-> ra màn hình CRUD sau này, ra được DB sau này, DASHBOARD 
+
+     * KẾT THÚC PHỎNG VẤN (POST, FOLLOW-UP)
+      - Kết thúc đúng giờ - tôn trọng việc người ta được trả lương
+      - LÀM BIÊN BẢN CUỘC HỌP/GẶP
+	* BIÊN BẢN CUỘC HỌP - FILE WORD, PDF GHI LẠI DIỄN BIẾN CUỘC GẶP VỚI CUSTOMER/USER
+	  CẤU TRÚC CHUNG CỦA BIÊN BẢN - MEETING MINUTES
+	   - Người gõ biên bản này có thể là thư kí - BA tập sự đi kèm với mình (BA xịn sò)
+	     người gửi biên bản này cho Customer phải là mình, vì mình chịu trách nhiệm
+	     trong phiên làm việc, phiên phỏng vấn
+	   - Cấu trúc của biên bản cuộc họp: 
+	     1. Ngày giờ diễn ra cuộc họp - nơi diễn ra (cty k/h, cty mình, quán cafe)
+	     2. Thành phần tham dự: mình (BA xịn sò), thư kí (BA tập sự), 
+				    user/customer(1 vài người)
+	     3. Chủ đề trao đổi: Ví dụ Quy trình mượn trả sách
+				 Mỗi bữa phỏng vấn k/h thì sẽ trao đổi về 1 chủ đề nào đó!!
+	     4. Nội dung trao đổi (phần chính của biên bản cuộc họp)
+		Chủ yếu ghi lại câu hỏi/lời đáp/giải thích của BA và Customer/User - Q&A
+		Vd: - Một student mượn tại bất kì thời điểm nào, ko quá 5 cuốn sách 
+		    - Trễ 1 ngày phạt 1k/cuốn/ngày
+		    - Một cuốn sách mượn tối đa 1 tháng
+		    - Sách mượn theo thời khóa biểu học tối đa 16 tuần
+		    - Nếu làm mất sách thì ...
+		    Đính kèm, vẽ tay các sơ đồ/luồng thông tin đã thảo luận
+		    -> sơ đồ luồng thông tin: (1) ------ (2) ------- (3)
+		    Ghi chú là đã có xin thêm các tập tin gì từ phía khách hàng
+	     5. Open items: VẤN ĐỀ CÒN BỎ NGỎ, những thứ còn chưa nói xong, cần đối chiếu
+			    thêm, cần làm rõ thêm ở lần gặp sau, hay lúc nào đó in future!
+	     6. Next meeting? Topic? Hẹn gặp lần kế lúc nào, ở đâu, 	    
+				     nội dung gì sẽ thảo luận 
+
+      - GỬI MAIL CHO CÁC BÊN, BÁO KẾT QUẢ LÀM VIỆC/CONFIRM NHỮNG THỨ TRONG BIÊN BẢN VÀ ĐỂ
+	CÁC SẾP 2 BÊN BIẾT CHUYỆN LẤY REQS ĐANG DIỄN RA!!! BA ĐANG LÀM ĐÚNG VIỆC, ĐÚNG TIME
+	* KĨ THUẬT VIẾT EMAIL CHUYÊN NGHIỆP!!!
+	  MỘT EMAIL (CHUYÊN NGHIỆP) GỒM NHỮNG THÀNH PHẦN CƠ BẢN SAU:
+	  
+	  1. Gửi tới những ai - người nhận??? TO:, CC:, BCC:
+	     
+	     * TO: địa chỉ email của người đang trao đổi/đang giao tiếp/thảo luận
+		 người nhận email ở mục TO: thì phải có trách nhiệm trực tiếp, liên quan
+					    trực tiếp đến câu chuyện đc đề cập trong email
+		 nếu có nhiều người liên quan, cùng phải giải quyết nội dung trong email
+		 những TO: này cần thiết phải REPLY - trả lời email thì các email này đc
+		 liệt kê chung ở phần TO: và cách nhau bằng dấu ;
+
+		 vd: TO: hoangnt2@fpt.edu.vn; phongdaotao@fpt.edu.vn 
+		 
+		 TO: khachHangX@company.com - vị khách hàng mình phỏng vấn ; và 
+					      những vị khác cùng được phỏng vấn hôm nay
+
+	     * Cc: (Carbon Copy - giấy "than" nhân bản nhanh 1 văn bản, 
+				liên 2 ở ngân hàng)
+		 gõ những email của những người có liên quan, nhưng ko cần thiết phải 
+		 reply/xử lí cái email này, họ hiện diện để biết câu chuyện gì đã diễn ra,
+		 thường sẽ là các sếp liên quan - biết chuyện đã diễn ra
+
+		 vd: Cc: sepKhachHang@ ; sepMinh@
+		     hàm ý: các sếp 2 bên ơi, em BA gửi mail cho k/h của các sếp đấy, 
+			    chúng em có làm việc
+
+	     * Bcc: (Blind Carbon Copy)
+		  Mù, ko thấy - phiên bản clone, copy của email nhưng có giới hạn người 
+				được biết!!!
+
+		  vd: banGai@gmail.com
+
+	          Ta giả bộ gửi email tới x, y, z
+	
+		   TO: x@
+		   cc: y@
+	           Bcc: z@
+		
+		  điều gì diễn ra:
+		  - xyz đều nhận đc email cùng lúc!!! 1 email bắn tới 3 nơi
+		  - nơi nhận, xyz sẽ thấy email này đc gửi đồng thời tới ai một cách 
+		    khác   nhau:
+		    + x, y: biết đc rằng email này họ nhận đc gửi đồng thời cho x, y
+		    + x, y: ko biết đc rằng email này còn đc gửi cho z@
+
+		  Bcc: dành cho nhóm cá nhân khác cần biết info cùng lúc, nhưng ko lộ mặt
+		       với đám To: Cc:, đảm bảo tính nguyên bản của email đc gửi cùng lúc!
+		       
+		       ko phải là trò lục trong inbox/send items/emails để reply, forward
+	       
+	     * CHỐT DEAL CHO PHẦN NGƯỜI NHẬN EMAIL:
+	     - To: người nhận, trực tiếp liên quan câu chuyện, trực tiếp trả lời/reply 
+										      email
+	     - Cc: những người khác cần biết câu chuyện gì đang diễn ra trong email; 
+		   ko cần thiết phải reply
+	     - Bcc: những người "hóng chuyện" cần biết có chuyện gì đang diễn ra, bí mật
+		    với 2 nhóm trên, tuyệt đối ko reply email
+
+	     * Lưu ý quan trọng khi Cc:
+	      - Có những email quan trọng, ta muốn biết chắc chắn rằng bên TO: đã nhận đc 
+		email rồi hay chưa thì ta thường Cc: cho chính mình
+	      - Cách thể hiện người viết email pro - theo dõi được mail đi, đến
+	      - Kĩ thuật kiểm tra chéo - recheck 1 điều gì chắc chắn đã diễn ra
+
+	      - Ví dụ khi gửi mail tìm việc làm/ứng tuyển (ko dùng từ XIN VIỆC)
+		TO: hr@congtytrongmo.com
+		CC: chinhminh@gmail.com
+
+		Send thì mình sẽ nhận đc mail của mình trong INBOX, TỨC LÀ ANH CHÀNG TO: ĐÃ
+		NHẬN MAIL MÌNH RỒI  
+		
+	  2. Chủ đề của email - Subject
+	   - Chủ đề email: 1 câu ngắn gọn, nói vắn tắt nội dung/mục đích của cái email
+			   Thường dùng cụm từ - phrase
+			   Ko viết 1 câu hoàn chỉnh, bao gồm từ cảm thán/xưng hô!!!
+
+	     Subject sai: Thầy ơi em nộp bài
+			  Thưa thầy em xin nghỉ học bữa nay
+			  Gửi công ty hồ sơ ứng tuyển - CV
+
+	     Subject đúng: Nộp bài về nhà số 5 môn OOP
+			   Submit assignment #5 - OOP class
+			   Assignment submission #5 - OOP
+
+			   V/v nghỉ học ngày 13/10/2023
+			   (Về việc)
+			   A day off notification
+			   Ask for a day off permission
+
+			   CV submission for FE position	
+			   CV submission for FE recruitment
+			   Nộp hồ sơ ứng tuyển vị trí lập trình back-end
+
+	  3. Nội dung email - Content
+
+	   3.1 Cách xưng hô - danh xưng - chào hỏi
+	    - PHẦN BẮT BUỘC PHẢI CÓ - XUẤT HIỆN ĐẦU TIÊN TRONG EMAIL
+	    - SAU LỜI CHÀO, KÈM TÊN NGƯỜI, THÌ DẤU PHẨY PHẢI GHI SÁT LIỀN
+
+	    * Level trang trọng, làm ăn (formal)
+
+	     Dear sir, (tôn trọng, nể trọng, trân trọng)
+	     Dear Mr. X,
+	     Dear all, (gửi chung cho 1 đám TO:)
+
+	     Gửi nhiều người, và liệt kê tên, mỗi dear trên 1 dòng, dấu phẩy kết thúc dòng
+	     Dear Mr. An,
+	     Dear Ms.Huong,
+
+	     Với phụ nữ nên có Ms. - rất an toàn (né Miss, Mrs, vì mình ko chắc trạng thái)
+	     
+	    * Level thân quen hoặc informal
+	     Hi all,
+	     Hello Binh,
+
+	     Hello, Hi ko nên dùng cho người lớn tuổi hơn mình trong văn hóa VN
+		       chỉ nên dùng cho ngang bằng, nhỏ hơn mình
+
+	    * Gửi công ty, đối tác, khách hàng, mình chưa rõ tên, người nhận, danh xưng
+	     Dear Quý công ty,
+	     Dear Quý đối tác,
+	     Dear Bộ phận tuyển dụng,
+
+	     To Whom It may Concern:  (thường dùng : trong tình huống này)
+
+	    SAU CÂU CHÀO LÀ 1 NHÁT ENTER, 1 DÒNG TRẮNG RỒI MỚI VÀO NỘI DUNG EMAIL	
+	
+	   3.2 Ghi chú đầu email - đính kèm
+	    - Nếu mail có đính kèm tập tin, thường ta sẽ nhấn câu đính kèm ngay lời 
+	      mở đầu email
+
+	    Dear Ms. An, (giả bộ là k/h mình mới pv xong)
+
+	    Enclosed please find the Meeting minutes #5 taken on October-13, 2023
+
+	    Enclosed please find my resume/my CV regarding to the FE position recruitment
+
+	    Attached please find ...
+	    Please find attached ...
+	    You will find enclosed my CV ...
+	    Đính kèm theo email này là Biên bản cuộc họp số #5 chủ đề Tìm hiểu quy trình
+	    mượn sách
+
+	    Nên tránh câu kiểu Việt bồi: Attach with this email is...
+ 
+	   3.3 Câu chữ trong nội dung email
+	    - Trang trọng, chuẩn mực, đúng ngữ pháp, dấu câu
+	    - Văn phong viết, ko phải văn phong nói: ko hok, xài, cx
+	    - Căn lề câu văn: căn sát bên trái, ko thụt ra thụt vô ngẫu nhiên
+			      thụt vô phải có chủ đích: nội dung con
+	    - Dấu câu: chấm, phẩy, hai chấm, hỏi, than phải viết sát liền kí tự trước đó,
+		       và sau nó 1 dấu cách
+		Đúng: Hôm nay trời nhẹ lên cao, tôi buồn không hiểu vì sao tôi buồn!
+		Sai:  Hôm nay trời nhẹ lên cao , tôi buồn không hiểu vì sao tôi buồn!
+		Sai:  Hôm nay trời nhẹ lên cao ,tôi buồn không hiểu vì sao tôi buồn!
+
+	    - Phát âm vùng miền khi gõ ra chữ, hay bị sai, cẩn thận check lại
+		Miền Bắc sai đầu từ
+		Miền Nam sai cuối từ
+
+		Vd: Bắt mắt/Bắc mắt
+		    Cắc cớ/Cắt cớ
+		    Bứt rứt/ bức rức
+		    Đặc biệt/ Đặt biệt	     
+
+	   3.4 Lời chào kết email
+	    - Hết nội dung email, thêm 1 dòng trắng, để kết email và kí tên
+
+		Dear Ms. An,
+
+		Enclosed please find...
+
+		Bla bla...
+		...
+		Bla bla...
+
+		Regards,
+		LocNHT
+	
+	    - Các loại lời kết khác nhau, mang ý nghĩa cảm ơn, hẹn gặp lại, chúc tụng gì đó
+ 	      NHỚ DẤU PHẨY, KO DẤU CHẤM!!!
+
+	      * Trang trọng:
+		- Yours sincerely, (với lần đầu tiên ra mắt, nộp đơn ứng tuyển vào cty) Cheers,
+		  Yours faithfully,
+		  Yours truly,
+		  Kính thư,
+
+		- Trân trọng, (thường xuyên dùng khi đi làm)
+		
+	      * Hay dùng:
+		- Best regards, (thường xuyên khi đi làm)
+		  Regards,
+		  Take care,
+		  Best,
+		  All best,
+		  Thanks & regards,
+		  Thanks & best regards,
+
+	      * Thân quen, với bạn bè, ít tuổi hơn:
+		- Cheers,
+		  Enjoys,
+		  Chào đoàn kết thân ái và quyết thắng,	
+
+	   3.5 Chữ kí - Signature  
+	    - Kí tên mình ngay dưới lời chúc, hoặc có thể cách 1 dòng đều đc
+	    - Tên viết kiểu tiếng Việt, tiếng Anh đều okie
+
+   		Lộc-Ngô Huỳnh Tấn
+		Ngô Huỳnh Tấn Lộc
+		Loc Ngo	
+		LocNHT
+
+	    - Có 1 số tên tiếng Việt trung tính, ta ghi thêm title giới tính vào để tránh 
+	      nhầm lẫn cho người reply email
+	      An Nguyễn (Ms.)
+	      Hòa Nguyễn (Mr.)
+
+	    - CHỨC DANH, HỌC VỊ/BẰNG CẤP
+	      PHÒNG BAN LÀM VIỆC
+	      TÊN CTY
+	      HÌNH THỨC LIÊN LẠC (MAIL, PHONE, MXH)
+	      MAXIM - CHÂM NGÔN TRIẾT LÍ SỐNG
+	
+	      LOGO CÔNG TY - THƯƠNG HIỆU CÁ NHÂN
+
+   1.1.2 WORKSHOP: 1 BA làm việc với nhóm khách hàng, nhiều chủ đề 
+		   (BA biết tổ chức, facilitate/facilitator)
+
+   1.1.3 FOCUS GROUP: 1 BA làm việc với customer/user, chỉ 1 chủ đề
+
+   1.1.4 OBSERVATION (ETHNOGRAPHY): quan sát customer/user đang làm việc
+
+   1.1.5 QUESTIONNAIRE: làm khảo sát, lấy feedback/suvey từ customer/user
+
+   1.1.6 DOCUMENT COLLECTION/DOCUMENT ANALYSIS: sưu tầm các tài liệu của customer
+
+   1.1.7 USER INTERFACE ANALYSIS: khảo sát các app tương đương đang có trên thị trường
+
+   1.1.8 SYSTEM INTERFACE ANALYSIS: app mình viết có kết nối với hệ thống nào khác hay ko?
+				    MoMo, GHN, Gmail, FB
+
+   1.1.9 PROTOTYPING: làm bản mẫu/phác thảo/bản demo/bản concept (FIGMA...)
+
+   1.1.10 BRAIN-STORMING: kĩ thuật công não, huy động "sức nghĩ" của mọi người
+
+   1.1.11 ...
+
+  1.2 ANALYSIS
+      ta phân tích câu chuyện của khách hàng, REQs được tìm thấy để lựa chọn, đề xuất 
+      các tính năng, các màn hình của app sẽ làm - TO BE SYSTEM
+
+  1.3 DOCUMENTATION/SPECIFICATION
+      viết toàn bộ REQs đã chốt deal từ góc nhìn của BA thành các cuốn Document:
+      BRD: Business Requirements Document
+      SRS: Software/System Requirements Specification
+      FRS/FRD: Functional Requirements Specification/Document
+
+  1.4 VALIDATION
+      kiểm thử/review/đọc xem xét lại 3 Document trên để đảm bảo chúng đầy đủ, chính xác
+      các REQs mà mai mốt sẽ là tính năng của phần mềm mà customer sẽ dùng
+      customer, dev team, BA đồng môn cùng xem xét!!! 
+      
+ 2. REQUIREMENTS MANAGEMENT: có REQs rồi, ta lưu trữ, sắp xếp, quản lí chúng ra sao
+			     do ta có nhiều phiên bản/version của phần mềm
+			     ứng với 1 customer, n customer
+
+==========================================================================================
+EMAIL gửi biên bản cuộc họp với khách hàng và các bên liên quan
+
+
+TO: KhachHang@dreamCompany.com
+CC: sepKhachHang@ ; sepMinh@ ; chinhMinh@
+
+Subject: Biên bản cuộc họp #5 (13/10/2023)   
+
+Dear Ms. An,
+
+Cảm ơn Ms. An đã dành thời gian sáng nay để giúp mình hiểu rõ về Quy trình mượn trả sách.
+Mình gửi kèm theo mail này biên bản cuộc họp - file "Meeting minutes #5 - 
+Book Borrowing.docx"
+(Enclosed please find the "Meeting minutes #5 - Book Borrowing.docx")
+
+Nghiệp vụ mượn trả sách có cái thú vị của riêng nó, với kha khá các quy tắc để đảm bảo 
+rằng sách trong thư viện luôn available cho những ai quan tâm đến việc đọc.
+Mình đã cố gắng nắm bắt nhanh hết mức có thể các khải niệm và ghi chép chúng vào trong biên
+bản đính kèm.
+Tuy nhiên, do có nhiều nghiệp vụ lần đầu mình va chạm, nên không chắc rằng mình có thể hiểu
+chính xác được như những gì Ms. đã chỉ ra trong ngày hôm nay.
+Nếu Ms. tìm thấy trong biên bản những sai sót, những thứ mình hiểu sai, nhờ Ms. sửa và điều
+chỉnh trực tiếp vào file biên bản.
+Cũng phiền nhờ Ms. tô chữ màu đỏ những chỗ sai, tô chữ màu xanh những chỗ Ms. thêm vào để
+mình tiện theo dõi và cập nhật.
+Nhờ Ms. gửi lại sớm giùm mình những điều chỉnh cần thiết.
+Một lần nữa cảm ơn Ms. An đã dành thời gian và nhiệt tình chia sẻ, diễn giải các khái niệm
+của bên thư viện cho mình.
+
+Hẹn gặp Ms. trong lần họp #6, ngày 20/10/2023 9:00 với chủ đề mình đang rất hóng: THANH
+LÍ SÁCH
+Chúc Ms. An có ngày làm việc vui vẻ.
+
+Yours sincerely,
+--
+LocNHT (Mr. kiêm Chuyên gia đi khách đẹp trai)
+
+==========================================================================================
+"COVER LETTER" for IT job
+"APPLICATION LETTER"					     
+
+GOOGLE ĐỂ TÌM RA NHỮNG MẪU CÂU VIẾT MAIL CHO NHÀ TUYỂN DỤNG
+
+==========================================================================================
+NGOẠI TRUYỆN: KỸ NĂNG THUYẾT TRÌNH
+
+* THUYẾT TRÌNH: 
+1. Chuẩn bị:
+- Slide
+- Kẹo, quà(sổ, bút,...)
+- Trang thiết bị cần có(folder chứa info, máy trợ giúp nhắc nội dung, vật may mắn)
+
+2. Tiến hành trình bày:
+ * Mở đầu: kịch tính, gây tò mò, drift, âm thanh ánh sáng, hiệu ứng, đóng kịch
+
+ * Thần thái, phong thái, body language - ngôn ngữ hình thể
+
+ * Đôi mắt: quan sát cả khán phòng 
+           ai đó buồn ngủ -> ko đc mất tinh thần, ko cần là Mr.Perfect
+	   nhìn đôi mắt còn đang nhìn mình -> khích lệ tinh thần
+
+ * Quản lí Q/A: 
+	- Cách 1: hỏi ngay khi đang nói	   -> tương tác cao, bản lĩnh sân khấu 
+	- Cách 2: chỉ được hỏi ở phần Q/A  -> đảm bảo thời gian truyền tải nội dung, "chán"
+	- "câu hỏi khó" -> ko phải là Mr. Biết Tuốt, MỤC TIÊU: CẢ KHÁN PHÒNG
+
+3. Kết thúc thuyết trình: Đúng giờ
+	- Lời cảm ơn
+	- Contact info
+	- PR next meeting
+
+* SLIDE:
+1. Tìm TEMPLATE: credit(để cuối slide)
+2. Cấu trúc slide:
+ - Trang chờ - welcome - thử màn hình -> gây tò mò, chú ý
+ - Tran bìa 
+
+   ---------------------------
+   |Logo		Logo |
+   |			     |	
+   |			     |	
+   |	HIỂU VỀ TRÁI TIM     |	font-size: 50; bold
+   |			     |	
+   |			     |	
+   |			     |	
+   |			     |	
+   |			     |	   
+   |			     |	
+   |			     |	
+   |			     |	
+   |Supervisor   Team member |	
+   |			     |	
+   |			     |	
+   |			     |	
+
+3. Trang profile
+
+   ---------------------------
+   |		   Chức vụ   |
+   |			     |	
+   |	Ảnh		     |	
+   |	Info cá nhân	     |	
+   |	Dự án nổi bật	     |	
+   |	Slogan/triết lý sống |	
+   |			     |	
+   |			     |	
+   |			     |	
+
+4. Trang mục lục   
+
+   ---------------------------
+   |		   	     |
+   |Agenda/Contents/Outlines |	
+   |	36, Bold	     |	
+   |I._____		     |	
+   |1._____ font 32, bold    |	
+   |2._____		     |	
+   |			     |	
+   |			     |	
+   |			     |	
+   ___________________________
+	max 1 trang
+
+5. Trang Conclusion
+6. Trang References
+6. Trang cuối
+ - THANK YOU & Q/A
+ - Info liên lạc
+
+=========================================================
+
+
+
+
+
+
+
+
